@@ -26,12 +26,35 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
+    [self.tableView setAllowsSelection:NO];
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+    _addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addItem:)];
+    self.navigationItem.rightBarButtonItem = _addButton;
+    
+    // Selected contacts array
+    NSDictionary *A = [NSDictionary dictionaryWithObjectsAndKeys:@"A",@"name",@"6508041611",@"phone",nil];
+    NSDictionary *B = [NSDictionary dictionaryWithObjectsAndKeys:@"B",@"name",@"6508041612",@"phone",nil];
+    NSDictionary *C = [NSDictionary dictionaryWithObjectsAndKeys:@"C",@"name",@"6508041613",@"phone",nil];
+    _selectedContacts = [[NSMutableArray alloc] initWithObjects:A,B,C,nil];
+    
+    // Location
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    [_locationManager startUpdatingLocation];
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    [self.tableView setEditing:editing animated:YES];
+    if (editing) {
+        _addButton.enabled = NO;
+    } else {
+        _addButton.enabled = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,78 +67,93 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [_selectedContacts count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    }
+    
+    NSDictionary *contact = [_selectedContacts objectAtIndex:indexPath.row];
+    cell.textLabel.text = [contact valueForKey:@"name"];
+    cell.detailTextLabel.text = [contact valueForKey:@"phone"];
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [_selectedContacts removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    NSLog(@"Location:lat:%f,lon:%f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+    //if we get a location less than 2 minutes old, stop updating location
+    if ( abs([newLocation.timestamp timeIntervalSinceDate: [NSDate date]]) < 120) {
+        [_locationManager stopUpdatingLocation];
+    }
+    _currentLocation = newLocation;
+}
+
+#pragma mark - ABPeoplePickerNavigationControllerDelegate
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person {
+    return  YES;
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker
+      shouldContinueAfterSelectingPerson:(ABRecordRef)person
+                                property:(ABPropertyID)property
+                              identifier:(ABMultiValueIdentifier)identifier {
+    ABMutableMultiValueRef multi = ABRecordCopyValue(person, property);
+    CFStringRef name = ABRecordCopyCompositeName(person);
+    NSString *displayName = (__bridge NSString *)name;
+    CFStringRef phone = ABMultiValueCopyValueAtIndex(multi, identifier);
+    NSString *phoneString = (__bridge NSString *) phone;
+    NSDictionary *newContact = [NSDictionary dictionaryWithObjectsAndKeys:displayName,@"name",phoneString,@"phone",nil];
+    [_selectedContacts addObject:newContact];
+    CFRelease(name);
+    CFRelease(phone);
+    CFRelease(multi);
+    [self.tableView reloadData];
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    return NO;
+}
+
+#pragma mark - handlers
+- (void)addItem:sender {
+    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+    picker.peoplePickerDelegate = self;
+    // Display only a person's phone
+    NSArray *displayedItems = [NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonPhoneProperty]];
+    picker.displayedProperties = displayedItems;
+    // Show the picker
+    [self presentViewController:picker animated:YES completion:NULL];
 }
 
 @end

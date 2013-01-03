@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <AddressBookUI/AddressBookUI.h>
 
-@interface ContactsViewController : UITableViewController
+@interface ContactsViewController : UITableViewController <CLLocationManagerDelegate, ABPeoplePickerNavigationControllerDelegate> {
+    CLLocationManager *_locationManager;
+    CLLocation *_currentLocation;
+    NSMutableArray *_selectedContacts;
+    UIBarButtonItem *_addButton;
+}
 
 @end

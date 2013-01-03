@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85498F7E1695775400BC670E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498F7D1695775400BC670E /* AddressBook.framework */; };
+		85498F801695775800BC670E /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498F7F1695775800BC670E /* AddressBookUI.framework */; };
 		85E52DB816921CB400B65A1E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E52DB716921CB400B65A1E /* UIKit.framework */; };
 		85E52DBA16921CB400B65A1E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E52DB916921CB400B65A1E /* Foundation.framework */; };
 		85E52DBC16921CB400B65A1E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E52DBB16921CB400B65A1E /* CoreGraphics.framework */; };
@@ -16,12 +18,13 @@
 		85E52DCA16921CB400B65A1E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 85E52DC916921CB400B65A1E /* Default.png */; };
 		85E52DCC16921CB400B65A1E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85E52DCB16921CB400B65A1E /* Default@2x.png */; };
 		85E52DCE16921CB400B65A1E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85E52DCD16921CB400B65A1E /* Default-568h@2x.png */; };
-		85E52DD116921CB400B65A1E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85E52DD016921CB400B65A1E /* ViewController.m */; };
-		85E52DD416921CB500B65A1E /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85E52DD216921CB500B65A1E /* ViewController.xib */; };
 		85E52DE116921F6700B65A1E /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85E52DE016921F6700B65A1E /* ContactsViewController.m */; };
+		85E52E17169233B700B65A1E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E52E16169233B700B65A1E /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		85498F7D1695775400BC670E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		85498F7F1695775800BC670E /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		85E52DB316921CB400B65A1E /* RX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85E52DB716921CB400B65A1E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		85E52DB916921CB400B65A1E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -35,11 +38,9 @@
 		85E52DC916921CB400B65A1E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		85E52DCB16921CB400B65A1E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		85E52DCD16921CB400B65A1E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		85E52DCF16921CB400B65A1E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		85E52DD016921CB400B65A1E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		85E52DD316921CB500B65A1E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		85E52DDF16921F6700B65A1E /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
 		85E52DE016921F6700B65A1E /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		85E52E16169233B700B65A1E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +48,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85498F801695775800BC670E /* AddressBookUI.framework in Frameworks */,
+				85498F7E1695775400BC670E /* AddressBook.framework in Frameworks */,
+				85E52E17169233B700B65A1E /* CoreLocation.framework in Frameworks */,
 				85E52DB816921CB400B65A1E /* UIKit.framework in Frameworks */,
 				85E52DBA16921CB400B65A1E /* Foundation.framework in Frameworks */,
 				85E52DBC16921CB400B65A1E /* CoreGraphics.framework in Frameworks */,
@@ -76,6 +80,9 @@
 		85E52DB616921CB400B65A1E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				85498F7F1695775800BC670E /* AddressBookUI.framework */,
+				85498F7D1695775400BC670E /* AddressBook.framework */,
+				85E52E16169233B700B65A1E /* CoreLocation.framework */,
 				85E52DB716921CB400B65A1E /* UIKit.framework */,
 				85E52DB916921CB400B65A1E /* Foundation.framework */,
 				85E52DBB16921CB400B65A1E /* CoreGraphics.framework */,
@@ -88,9 +95,6 @@
 			children = (
 				85E52DC616921CB400B65A1E /* AppDelegate.h */,
 				85E52DC716921CB400B65A1E /* AppDelegate.m */,
-				85E52DCF16921CB400B65A1E /* ViewController.h */,
-				85E52DD016921CB400B65A1E /* ViewController.m */,
-				85E52DD216921CB500B65A1E /* ViewController.xib */,
 				85E52DBE16921CB400B65A1E /* Supporting Files */,
 				85E52DDF16921F6700B65A1E /* ContactsViewController.h */,
 				85E52DE016921F6700B65A1E /* ContactsViewController.m */,
@@ -167,7 +171,6 @@
 				85E52DCA16921CB400B65A1E /* Default.png in Resources */,
 				85E52DCC16921CB400B65A1E /* Default@2x.png in Resources */,
 				85E52DCE16921CB400B65A1E /* Default-568h@2x.png in Resources */,
-				85E52DD416921CB500B65A1E /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,7 +183,6 @@
 			files = (
 				85E52DC416921CB400B65A1E /* main.m in Sources */,
 				85E52DC816921CB400B65A1E /* AppDelegate.m in Sources */,
-				85E52DD116921CB400B65A1E /* ViewController.m in Sources */,
 				85E52DE116921F6700B65A1E /* ContactsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,14 +196,6 @@
 				85E52DC116921CB400B65A1E /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		85E52DD216921CB500B65A1E /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				85E52DD316921CB500B65A1E /* en */,
-			);
-			name = ViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -263,6 +257,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RX/RX-Prefix.pch";
 				INFOPLIST_FILE = "RX/RX-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -274,6 +269,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RX/RX-Prefix.pch";
 				INFOPLIST_FILE = "RX/RX-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
