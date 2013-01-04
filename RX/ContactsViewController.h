@@ -10,11 +10,12 @@
 #import <CoreLocation/CoreLocation.h>
 #import <AddressBookUI/AddressBookUI.h>
 
-@interface ContactsViewController : UITableViewController <CLLocationManagerDelegate, ABPeoplePickerNavigationControllerDelegate> {
-    CLLocationManager *_locationManager;
-    CLLocation *_currentLocation;
-    NSMutableArray *_selectedContacts;
-    UIBarButtonItem *_addButton;
-}
+@interface ContactsViewController : UITableViewController <CLLocationManagerDelegate, ABPeoplePickerNavigationControllerDelegate>
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *currentLocation;
+@property (strong, nonatomic) NSMutableArray *selectedContacts;
+@property (strong, nonatomic) UIBarButtonItem *addButton;
 
 @end
