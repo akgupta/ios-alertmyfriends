@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8529E4CA16981CE1003A1C44 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8529E4C916981CE1003A1C44 /* MessageUI.framework */; };
 		85498F7E1695775400BC670E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498F7D1695775400BC670E /* AddressBook.framework */; };
 		85498F801695775800BC670E /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498F7F1695775800BC670E /* AddressBookUI.framework */; };
 		85498FB61696B16C00BC670E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498FB51696B16C00BC670E /* CoreData.framework */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8529E4C916981CE1003A1C44 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		85498F7D1695775400BC670E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		85498F7F1695775800BC670E /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		85498FB51696B16C00BC670E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8529E4CA16981CE1003A1C44 /* MessageUI.framework in Frameworks */,
 				85498FB61696B16C00BC670E /* CoreData.framework in Frameworks */,
 				85498F801695775800BC670E /* AddressBookUI.framework in Frameworks */,
 				85498F7E1695775400BC670E /* AddressBook.framework in Frameworks */,
@@ -88,6 +91,7 @@
 		85E52DB616921CB400B65A1E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8529E4C916981CE1003A1C44 /* MessageUI.framework */,
 				85498FB51696B16C00BC670E /* CoreData.framework */,
 				85498F7F1695775800BC670E /* AddressBookUI.framework */,
 				85498F7D1695775400BC670E /* AddressBook.framework */,
