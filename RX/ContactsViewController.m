@@ -41,31 +41,7 @@
     if (motion == UIEventSubtypeMotionShake)
     {
         NSLog(@"INFO:%@", @"Shake");
-        // reverse geocode and send as text message
-        [_geoCoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-            if (error) {
-                NSLog(@"ERROR:There was a reverse geocoding error\n%@", [error description]);
-            }
-            // Iterate through all of the placemarks returned
-            // and output them to the console
-            for(CLPlacemark *placemark in placemarks) {
-                NSLog(@"INFO:Address:\n%@", ABCreateStringWithAddressDictionary(placemark.addressDictionary, YES));
-            }
-            CLPlacemark *placemark = [placemarks lastObject];
-            NSString *address = ABCreateStringWithAddressDictionary(placemark.addressDictionary, YES);
-            // send SMS
-            MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
-            if([MFMessageComposeViewController canSendText]) {
-                [messageController setBody:[NSString stringWithFormat:@"I need help! I'am at \n%@", address]];
-                NSMutableArray *recipients = [NSMutableArray arrayWithCapacity:[_selectedContacts count]];
-                for (Contact *contact in _selectedContacts) {
-                    [recipients addObject:[contact phone]];
-                }
-                [messageController setRecipients:recipients];
-                messageController.messageComposeDelegate = self;
-                [self presentViewController:messageController animated:YES completion:NULL];
-            }
-        }];
+        [self sendAlert];
     }
 }
 
@@ -80,6 +56,11 @@
     
     _addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addItem:)];
     self.navigationItem.rightBarButtonItem = _addButton;
+    
+    // Toolbar
+    [self.navigationController setToolbarHidden:NO];
+    UIBarButtonItem *alertButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(sendAlert)];
+    self.toolbarItems = [NSArray arrayWithObject:alertButton];
     
     // Fetch selected contacts
     [self fetch];
@@ -219,6 +200,37 @@
     picker.displayedProperties = displayedItems;
     // Show the picker
     [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (void)sendAlert
+{
+    // reverse geocode and send as text message
+    [_geoCoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error) {
+            NSLog(@"ERROR:There was a reverse geocoding error\n%@", [error description]);
+        }
+        // Iterate through all of the placemarks returned
+        // and output them to the console
+        for(CLPlacemark *placemark in placemarks) {
+            NSLog(@"INFO:Address:\n%@", ABCreateStringWithAddressDictionary(placemark.addressDictionary, YES));
+        }
+        CLPlacemark *placemark = [placemarks lastObject];
+        NSString *address = ABCreateStringWithAddressDictionary(placemark.addressDictionary, YES);
+        // send SMS
+        NSString *messageText = [NSString stringWithFormat:@"I need help! I'm at \n%@\nLon/Lat: %f, %f", address, _currentLocation.coordinate.latitude, _currentLocation.coordinate.longitude];
+        NSLog(@"INFO:Message text:\n%@", messageText);
+        MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+        if([MFMessageComposeViewController canSendText]) {
+            [messageController setBody:messageText];
+            NSMutableArray *recipients = [NSMutableArray arrayWithCapacity:[_selectedContacts count]];
+            for (Contact *contact in _selectedContacts) {
+                [recipients addObject:[contact phone]];
+            }
+            [messageController setRecipients:recipients];
+            messageController.messageComposeDelegate = self;
+            [self presentViewController:messageController animated:YES completion:NULL];
+        }
+    }];
 }
 
 #pragma mark - CoreData
