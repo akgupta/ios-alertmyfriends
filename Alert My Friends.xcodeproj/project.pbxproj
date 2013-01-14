@@ -11,7 +11,7 @@
 		85498F7E1695775400BC670E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498F7D1695775400BC670E /* AddressBook.framework */; };
 		85498F801695775800BC670E /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498F7F1695775800BC670E /* AddressBookUI.framework */; };
 		85498FB61696B16C00BC670E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498FB51696B16C00BC670E /* CoreData.framework */; };
-		8549901D1696BF6A00BC670E /* RX.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8549901B1696BF6A00BC670E /* RX.xcdatamodeld */; };
+		8549901D1696BF6A00BC670E /* Alert My Friends.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8549901B1696BF6A00BC670E /* Alert My Friends.xcdatamodeld */; };
 		854990201696C0FB00BC670E /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 8549901F1696C0FB00BC670E /* Contact.m */; };
 		85E52DB816921CB400B65A1E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E52DB716921CB400B65A1E /* UIKit.framework */; };
 		85E52DBA16921CB400B65A1E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E52DB916921CB400B65A1E /* Foundation.framework */; };
@@ -31,24 +31,24 @@
 		85498F7D1695775400BC670E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		85498F7F1695775800BC670E /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		85498FB51696B16C00BC670E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		8549901C1696BF6A00BC670E /* RX.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RX.xcdatamodel; sourceTree = "<group>"; };
-		8549901E1696C0FB00BC670E /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
-		8549901F1696C0FB00BC670E /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
-		85E52DB316921CB400B65A1E /* RX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8549901C1696BF6A00BC670E /* Alert My Friends.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Alert My Friends.xcdatamodel"; sourceTree = "<group>"; };
+		8549901E1696C0FB00BC670E /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Contact.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8549901F1696C0FB00BC670E /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Contact.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		85E52DB316921CB400B65A1E /* Alert My Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alert My Friends.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85E52DB716921CB400B65A1E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		85E52DB916921CB400B65A1E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		85E52DBB16921CB400B65A1E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		85E52DBF16921CB400B65A1E /* RX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RX-Info.plist"; sourceTree = "<group>"; };
+		85E52DBF16921CB400B65A1E /* Alert My Friends-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Alert My Friends-Info.plist"; sourceTree = "<group>"; };
 		85E52DC116921CB400B65A1E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		85E52DC316921CB400B65A1E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		85E52DC516921CB400B65A1E /* RX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RX-Prefix.pch"; sourceTree = "<group>"; };
-		85E52DC616921CB400B65A1E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		85E52DC716921CB400B65A1E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		85E52DC316921CB400B65A1E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		85E52DC516921CB400B65A1E /* Alert My Friends-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "Alert My Friends-Prefix.pch"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		85E52DC616921CB400B65A1E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		85E52DC716921CB400B65A1E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		85E52DC916921CB400B65A1E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		85E52DCB16921CB400B65A1E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		85E52DCD16921CB400B65A1E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		85E52DDF16921F6700B65A1E /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
-		85E52DE016921F6700B65A1E /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		85E52DDF16921F6700B65A1E /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ContactsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		85E52DE016921F6700B65A1E /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ContactsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		85E52E16169233B700B65A1E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -74,7 +74,7 @@
 		85E52DA816921CB400B65A1E = {
 			isa = PBXGroup;
 			children = (
-				85E52DBD16921CB400B65A1E /* RX */,
+				85E52DBD16921CB400B65A1E /* Alert My Friends */,
 				85E52DB616921CB400B65A1E /* Frameworks */,
 				85E52DB416921CB400B65A1E /* Products */,
 			);
@@ -83,7 +83,7 @@
 		85E52DB416921CB400B65A1E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				85E52DB316921CB400B65A1E /* RX.app */,
+				85E52DB316921CB400B65A1E /* Alert My Friends.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,7 +103,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		85E52DBD16921CB400B65A1E /* RX */ = {
+		85E52DBD16921CB400B65A1E /* Alert My Friends */ = {
 			isa = PBXGroup;
 			children = (
 				85E52DC616921CB400B65A1E /* AppDelegate.h */,
@@ -111,20 +111,20 @@
 				85E52DBE16921CB400B65A1E /* Supporting Files */,
 				85E52DDF16921F6700B65A1E /* ContactsViewController.h */,
 				85E52DE016921F6700B65A1E /* ContactsViewController.m */,
-				8549901B1696BF6A00BC670E /* RX.xcdatamodeld */,
+				8549901B1696BF6A00BC670E /* Alert My Friends.xcdatamodeld */,
 				8549901E1696C0FB00BC670E /* Contact.h */,
 				8549901F1696C0FB00BC670E /* Contact.m */,
 			);
-			path = RX;
+			path = "Alert My Friends";
 			sourceTree = "<group>";
 		};
 		85E52DBE16921CB400B65A1E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				85E52DBF16921CB400B65A1E /* RX-Info.plist */,
+				85E52DBF16921CB400B65A1E /* Alert My Friends-Info.plist */,
 				85E52DC016921CB400B65A1E /* InfoPlist.strings */,
 				85E52DC316921CB400B65A1E /* main.m */,
-				85E52DC516921CB400B65A1E /* RX-Prefix.pch */,
+				85E52DC516921CB400B65A1E /* Alert My Friends-Prefix.pch */,
 				85E52DC916921CB400B65A1E /* Default.png */,
 				85E52DCB16921CB400B65A1E /* Default@2x.png */,
 				85E52DCD16921CB400B65A1E /* Default-568h@2x.png */,
@@ -135,9 +135,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		85E52DB216921CB400B65A1E /* RX */ = {
+		85E52DB216921CB400B65A1E /* Alert My Friends */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 85E52DD716921CB500B65A1E /* Build configuration list for PBXNativeTarget "RX" */;
+			buildConfigurationList = 85E52DD716921CB500B65A1E /* Build configuration list for PBXNativeTarget "Alert My Friends" */;
 			buildPhases = (
 				85E52DAF16921CB400B65A1E /* Sources */,
 				85E52DB016921CB400B65A1E /* Frameworks */,
@@ -147,9 +147,9 @@
 			);
 			dependencies = (
 			);
-			name = RX;
+			name = "Alert My Friends";
 			productName = RX;
-			productReference = 85E52DB316921CB400B65A1E /* RX.app */;
+			productReference = 85E52DB316921CB400B65A1E /* Alert My Friends.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -161,7 +161,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Akhilesh Gupta";
 			};
-			buildConfigurationList = 85E52DAD16921CB400B65A1E /* Build configuration list for PBXProject "RX" */;
+			buildConfigurationList = 85E52DAD16921CB400B65A1E /* Build configuration list for PBXProject "Alert My Friends" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -173,7 +173,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				85E52DB216921CB400B65A1E /* RX */,
+				85E52DB216921CB400B65A1E /* Alert My Friends */,
 			);
 		};
 /* End PBXProject section */
@@ -200,7 +200,7 @@
 				85E52DC416921CB400B65A1E /* main.m in Sources */,
 				85E52DC816921CB400B65A1E /* AppDelegate.m in Sources */,
 				85E52DE116921F6700B65A1E /* ContactsViewController.m in Sources */,
-				8549901D1696BF6A00BC670E /* RX.xcdatamodeld in Sources */,
+				8549901D1696BF6A00BC670E /* Alert My Friends.xcdatamodeld in Sources */,
 				854990201696C0FB00BC670E /* Contact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,10 +273,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RX/RX-Prefix.pch";
-				INFOPLIST_FILE = "RX/RX-Info.plist";
+				GCC_PREFIX_HEADER = "Alert My Friends/Alert My Friends-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Alert My Friends/Alert My Friends-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Alert My Friends";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -285,10 +285,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RX/RX-Prefix.pch";
-				INFOPLIST_FILE = "RX/RX-Info.plist";
+				GCC_PREFIX_HEADER = "Alert My Friends/Alert My Friends-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Alert My Friends/Alert My Friends-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Alert My Friends";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -296,7 +296,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		85E52DAD16921CB400B65A1E /* Build configuration list for PBXProject "RX" */ = {
+		85E52DAD16921CB400B65A1E /* Build configuration list for PBXProject "Alert My Friends" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				85E52DD516921CB500B65A1E /* Debug */,
@@ -305,7 +305,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		85E52DD716921CB500B65A1E /* Build configuration list for PBXNativeTarget "RX" */ = {
+		85E52DD716921CB500B65A1E /* Build configuration list for PBXNativeTarget "Alert My Friends" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				85E52DD816921CB500B65A1E /* Debug */,
@@ -317,13 +317,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8549901B1696BF6A00BC670E /* RX.xcdatamodeld */ = {
+		8549901B1696BF6A00BC670E /* Alert My Friends.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8549901C1696BF6A00BC670E /* RX.xcdatamodel */,
+				8549901C1696BF6A00BC670E /* Alert My Friends.xcdatamodel */,
 			);
-			currentVersion = 8549901C1696BF6A00BC670E /* RX.xcdatamodel */;
-			path = RX.xcdatamodeld;
+			currentVersion = 8549901C1696BF6A00BC670E /* Alert My Friends.xcdatamodel */;
+			path = "Alert My Friends.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
