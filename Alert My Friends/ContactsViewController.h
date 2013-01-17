@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *currentLocation;
+@property (strong, nonatomic) NSString *currentAddress;
 @property (strong, nonatomic) NSMutableArray *selectedContacts;
 @property (strong, nonatomic) UIBarButtonItem *addButton;
 @property (strong, nonatomic) CLGeocoder *geoCoder;

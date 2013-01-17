@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8516913916A801EE00DD3426 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8516913816A801EE00DD3426 /* Localizable.strings */; };
 		8529E4CA16981CE1003A1C44 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8529E4C916981CE1003A1C44 /* MessageUI.framework */; };
 		85498F7E1695775400BC670E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498F7D1695775400BC670E /* AddressBook.framework */; };
 		85498F801695775800BC670E /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498F7F1695775800BC670E /* AddressBookUI.framework */; };
@@ -27,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8516913616A8007800DD3426 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		8516913816A801EE00DD3426 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		8529E4C916981CE1003A1C44 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		85498F7D1695775400BC670E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		85498F7F1695775800BC670E /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -111,9 +114,9 @@
 				85E52DBE16921CB400B65A1E /* Supporting Files */,
 				85E52DDF16921F6700B65A1E /* ContactsViewController.h */,
 				85E52DE016921F6700B65A1E /* ContactsViewController.m */,
-				8549901B1696BF6A00BC670E /* Alert My Friends.xcdatamodeld */,
 				8549901E1696C0FB00BC670E /* Contact.h */,
 				8549901F1696C0FB00BC670E /* Contact.m */,
+				8516913616A8007800DD3426 /* Constants.h */,
 			);
 			path = "Alert My Friends";
 			sourceTree = "<group>";
@@ -121,6 +124,8 @@
 		85E52DBE16921CB400B65A1E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8549901B1696BF6A00BC670E /* Alert My Friends.xcdatamodeld */,
+				8516913816A801EE00DD3426 /* Localizable.strings */,
 				85E52DBF16921CB400B65A1E /* Alert My Friends-Info.plist */,
 				85E52DC016921CB400B65A1E /* InfoPlist.strings */,
 				85E52DC316921CB400B65A1E /* main.m */,
@@ -187,6 +192,7 @@
 				85E52DCA16921CB400B65A1E /* Default.png in Resources */,
 				85E52DCC16921CB400B65A1E /* Default@2x.png in Resources */,
 				85E52DCE16921CB400B65A1E /* Default-568h@2x.png in Resources */,
+				8516913916A801EE00DD3426 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +283,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Alert My Friends/Alert My Friends-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "Alert My Friends";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -289,6 +296,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Alert My Friends/Alert My Friends-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "Alert My Friends";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

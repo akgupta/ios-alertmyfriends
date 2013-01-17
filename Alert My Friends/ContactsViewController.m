@@ -18,6 +18,7 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize locationManager = _locationManager;
 @synthesize currentLocation = _currentLocation;
+@synthesize currentAddress = _currentAddress;
 @synthesize selectedContacts = _selectedContacts;
 @synthesize addButton = _addButton;
 @synthesize geoCoder = _geoCoder;
@@ -53,7 +54,6 @@
     
     [self.tableView setAllowsSelection:NO];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
     _addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addItem:)];
@@ -148,6 +148,21 @@
     
     _currentLocation = newLocation;
     
+    // reverse geocode and save current address
+    [_geoCoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error) {
+            NSLog(@"ERROR:There was a reverse geocoding error\n%@", [error description]);
+        }
+        // Iterate through all of the placemarks returned
+        // and output them to the console
+        for(CLPlacemark *placemark in placemarks) {
+            NSLog(@"INFO:Address:\n%@", ABCreateStringWithAddressDictionary(placemark.addressDictionary, YES));
+        }
+        CLPlacemark *placemark = [placemarks lastObject];
+        _currentAddress = ABCreateStringWithAddressDictionary(placemark.addressDictionary, YES);
+    }];
+
+    
 //    // test that the horizontal accuracy does not indicate an invalid measurement
 //    if (newLocation.horizontalAccuracy < 0) return;
     
@@ -206,33 +221,20 @@
 
 - (void)sendAlert
 {
-    // reverse geocode and send as text message
-    [_geoCoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        if (error) {
-            NSLog(@"ERROR:There was a reverse geocoding error\n%@", [error description]);
+    // send SMS
+    NSString *messageText = [NSString stringWithFormat:@"I need help! I'm at \n%@\nLon/Lat: %f, %f", _currentAddress, _currentLocation.coordinate.latitude, _currentLocation.coordinate.longitude];
+    NSLog(@"INFO:Message text:\n%@", messageText);
+    MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+    if([MFMessageComposeViewController canSendText]) {
+        [messageController setBody:messageText];
+        NSMutableArray *recipients = [NSMutableArray arrayWithCapacity:[_selectedContacts count]];
+        for (Contact *contact in _selectedContacts) {
+            [recipients addObject:[contact phone]];
         }
-        // Iterate through all of the placemarks returned
-        // and output them to the console
-        for(CLPlacemark *placemark in placemarks) {
-            NSLog(@"INFO:Address:\n%@", ABCreateStringWithAddressDictionary(placemark.addressDictionary, YES));
-        }
-        CLPlacemark *placemark = [placemarks lastObject];
-        NSString *address = ABCreateStringWithAddressDictionary(placemark.addressDictionary, YES);
-        // send SMS
-        NSString *messageText = [NSString stringWithFormat:@"I need help! I'm at \n%@\nLon/Lat: %f, %f", address, _currentLocation.coordinate.latitude, _currentLocation.coordinate.longitude];
-        NSLog(@"INFO:Message text:\n%@", messageText);
-        MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
-        if([MFMessageComposeViewController canSendText]) {
-            [messageController setBody:messageText];
-            NSMutableArray *recipients = [NSMutableArray arrayWithCapacity:[_selectedContacts count]];
-            for (Contact *contact in _selectedContacts) {
-                [recipients addObject:[contact phone]];
-            }
-            [messageController setRecipients:recipients];
-            messageController.messageComposeDelegate = self;
-            [self presentViewController:messageController animated:YES completion:NULL];
-        }
-    }];
+        [messageController setRecipients:recipients];
+        messageController.messageComposeDelegate = self;
+        [self presentViewController:messageController animated:YES completion:NULL];
+    }
 }
 
 #pragma mark - CoreData

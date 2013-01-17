@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Alert My Friends
+
+  Created by Akhilesh Gupta on 1/17/13.
+  Copyright (c) 2013 Akhilesh Gupta. All rights reserved.
+*/
+
+"db_error" = "Database Error";
+"db_error_message" = "Please delete this application and then install the update. Quit the application now by pressing the Home button";
+"ok" = "OK";

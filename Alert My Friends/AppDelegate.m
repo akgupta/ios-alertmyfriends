@@ -66,8 +66,10 @@
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"db_error", "text db_error") message:NSLocalizedString(@"db_error_message", "text db_error_message") delegate:self cancelButtonTitle:NSLocalizedString(@"ok", "text ok") otherButtonTitles:nil];
+            [alert show];
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
+//            abort();
         }
     }
 }
@@ -97,7 +99,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Alert My Friends" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:kModelResource withExtension:kModelExtension];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -110,11 +112,15 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Alert My Friends.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:kStoreName];
+    
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+							 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+							 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
          
@@ -138,8 +144,10 @@
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
          
          */
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"db_error", "text db_error") message:NSLocalizedString(@"db_error_message", "text db_error_message") delegate:self cancelButtonTitle:NSLocalizedString(@"ok", "text ok") otherButtonTitles:nil];
+		[alert show];
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+//        abort();
     }
     
     return _persistentStoreCoordinator;
