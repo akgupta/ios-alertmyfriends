@@ -12,6 +12,8 @@
 		8516916D16A9370E00DD3426 /* siren.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8516916C16A9370E00DD3426 /* siren.wav */; };
 		8520520E16AA1A92006D5FB7 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8520520D16AA1A92006D5FB7 /* SettingsViewController.m */; };
 		8529E4CA16981CE1003A1C44 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8529E4C916981CE1003A1C44 /* MessageUI.framework */; };
+		853369DF16AA6C9A00769B35 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 853369DE16AA6C9A00769B35 /* Icon.png */; };
+		853369E116AA6CAB00769B35 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 853369E016AA6CAB00769B35 /* Icon@2x.png */; };
 		85498F7E1695775400BC670E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498F7D1695775400BC670E /* AddressBook.framework */; };
 		85498F801695775800BC670E /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498F7F1695775800BC670E /* AddressBookUI.framework */; };
 		85498FB61696B16C00BC670E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498FB51696B16C00BC670E /* CoreData.framework */; };
@@ -38,6 +40,9 @@
 		8520520C16AA1A92006D5FB7 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		8520520D16AA1A92006D5FB7 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		8529E4C916981CE1003A1C44 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		853369DE16AA6C9A00769B35 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		853369E016AA6CAB00769B35 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
+		853369E216AA6F5200769B35 /* AlertMyFriends-512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AlertMyFriends-512x512.png"; path = "../AlertMyFriends-512x512.png"; sourceTree = "<group>"; };
 		85498F7D1695775400BC670E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		85498F7F1695775800BC670E /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		85498FB51696B16C00BC670E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -135,6 +140,9 @@
 		85E52DBE16921CB400B65A1E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				853369E216AA6F5200769B35 /* AlertMyFriends-512x512.png */,
+				853369E016AA6CAB00769B35 /* Icon@2x.png */,
+				853369DE16AA6C9A00769B35 /* Icon.png */,
 				8516916C16A9370E00DD3426 /* siren.wav */,
 				8549901B1696BF6A00BC670E /* Alert My Friends.xcdatamodeld */,
 				8516913816A801EE00DD3426 /* Localizable.strings */,
@@ -206,6 +214,8 @@
 				85E52DCE16921CB400B65A1E /* Default-568h@2x.png in Resources */,
 				8516913916A801EE00DD3426 /* Localizable.strings in Resources */,
 				8516916D16A9370E00DD3426 /* siren.wav in Resources */,
+				853369DF16AA6C9A00769B35 /* Icon.png in Resources */,
+				853369E116AA6CAB00769B35 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

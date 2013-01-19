@@ -16,3 +16,5 @@
 "alert_button" = "Alert!";
 "settings" = "Settings";
 "help" = "Help";
+"empty_contacts_title" = "Add Contacts";
+"empty_contacts_message" = "Please add some contacts before you can send alerts";

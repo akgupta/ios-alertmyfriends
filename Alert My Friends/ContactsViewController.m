@@ -72,10 +72,12 @@
     [self.navigationController setToolbarHidden:NO];
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *alertButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"alert_button", "text alert_button") style:UIBarButtonItemStyleBordered target:self action:@selector(sendAlert)];
-    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
-    [infoButton addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
-    self.toolbarItems = [NSArray arrayWithObjects:flexibleSpace, alertButton, flexibleSpace, infoBarButton, nil];
+    
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"\u2699" style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)];
+    UIFont *settingsFont = [UIFont fontWithName:@"Helvetica" size:24.0];
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:settingsFont, UITextAttributeFont, nil];
+    [settingsButton setTitleTextAttributes:dict forState:UIControlStateNormal];
+    self.toolbarItems = [NSArray arrayWithObjects:flexibleSpace, alertButton, flexibleSpace, settingsButton, nil];
     
     // Fetch selected contacts
     [self fetch];
@@ -247,6 +249,11 @@
 
 - (void)sendAlert
 {
+    if ([_selectedContacts count] == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"empty_contacts_title", "text empty_contacts_title") message:NSLocalizedString(@"empty_contacts_message", "text empty_contacts_message") delegate:self cancelButtonTitle:NSLocalizedString(@"ok", "text ok") otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     if ([[NSUserDefaults standardUserDefaults] boolForKey:kSiren]) {
         [_player play];
     }
