@@ -21,6 +21,13 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    // Register the preference defaults early.
+    NSDictionary *appDefaults = [NSDictionary
+                                 dictionaryWithObjectsAndKeys:
+                                 [NSNumber numberWithBool:NO], kSiren,
+                                 [NSNumber numberWithBool:NO], kShake, nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    // init contacts controller
     self.contactsViewController = [[ContactsViewController alloc] initWithStyle:UITableViewStylePlain];
     self.contactsViewController.managedObjectContext = [self managedObjectContext];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.contactsViewController];
@@ -37,7 +44,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
@@ -69,7 +76,7 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"db_error", "text db_error") message:NSLocalizedString(@"db_error_message", "text db_error_message") delegate:self cancelButtonTitle:NSLocalizedString(@"ok", "text ok") otherButtonTitles:nil];
             [alert show];
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-//            abort();
+            //            abort();
         }
     }
 }
@@ -147,7 +154,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"db_error", "text db_error") message:NSLocalizedString(@"db_error_message", "text db_error_message") delegate:self cancelButtonTitle:NSLocalizedString(@"ok", "text ok") otherButtonTitles:nil];
 		[alert show];
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-//        abort();
+        //        abort();
     }
     
     return _persistentStoreCoordinator;

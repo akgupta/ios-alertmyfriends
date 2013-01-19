@@ -9,3 +9,10 @@
 "db_error" = "Database Error";
 "db_error_message" = "Please delete this application and then install the update. Quit the application now by pressing the Home button";
 "ok" = "OK";
+"sms_text" = "I need help! I'm at\n%@\n%@";
+"siren_on_alert" = "Siren on alert";
+"shake_to_alert" = "Shake to alert";
+"alert_my_friends" = "Alert My Friends";
+"alert_button" = "Alert!";
+"settings" = "Settings";
+"help" = "Help";

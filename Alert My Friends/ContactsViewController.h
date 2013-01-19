@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <AddressBookUI/AddressBookUI.h>
 #import <MessageUI/MessageUI.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface ContactsViewController : UITableViewController <CLLocationManagerDelegate, ABPeoplePickerNavigationControllerDelegate, MFMessageComposeViewControllerDelegate>
 
@@ -20,5 +21,6 @@
 @property (strong, nonatomic) NSMutableArray *selectedContacts;
 @property (strong, nonatomic) UIBarButtonItem *addButton;
 @property (strong, nonatomic) CLGeocoder *geoCoder;
+@property (strong, nonatomic) AVAudioPlayer *player;
 
 @end

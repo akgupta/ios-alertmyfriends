@@ -8,6 +8,7 @@
 
 #import "ContactsViewController.h"
 #import "Contact.h"
+#import "SettingsViewController.h"
 
 @interface ContactsViewController ()
 
@@ -22,6 +23,7 @@
 @synthesize selectedContacts = _selectedContacts;
 @synthesize addButton = _addButton;
 @synthesize geoCoder = _geoCoder;
+@synthesize player = _player;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -42,15 +44,22 @@
     if (motion == UIEventSubtypeMotionShake)
     {
         NSLog(@"INFO:%@", @"Shake");
-        [self sendAlert];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:kShake]) {
+            [self sendAlert];
+        }
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self becomeFirstResponder];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self setTitle:@"Alert My Friends"];
+    [self setTitle:NSLocalizedString(@"alert_my_friends", "text alert_my_friends")];
     
     [self.tableView setAllowsSelection:NO];
     
@@ -61,8 +70,12 @@
     
     // Toolbar
     [self.navigationController setToolbarHidden:NO];
-    UIBarButtonItem *alertButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(sendAlert)];
-    self.toolbarItems = [NSArray arrayWithObject:alertButton];
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *alertButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"alert_button", "text alert_button") style:UIBarButtonItemStyleBordered target:self action:@selector(sendAlert)];
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
+    [infoButton addTarget:self action:@selector(showSettings) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+    self.toolbarItems = [NSArray arrayWithObjects:flexibleSpace, alertButton, flexibleSpace, infoBarButton, nil];
     
     // Fetch selected contacts
     [self fetch];
@@ -74,6 +87,14 @@
     [_locationManager setDistanceFilter:100];
     [_locationManager startUpdatingLocation];
     _geoCoder = [[CLGeocoder alloc] init];
+    
+    // AV Player
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource: @"siren" ofType: @"wav"];
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: soundFilePath];
+    _player = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
+    [_player prepareToPlay];
+    [_player setVolume:1.0];
+    [_player setNumberOfLoops:2];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
@@ -89,6 +110,7 @@
 
 - (void)didReceiveMemoryWarning
 {
+    [_player stop];
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -111,8 +133,12 @@
     }
     
     Contact *contact = (Contact *)[_selectedContacts objectAtIndex:indexPath.row];
-    cell.textLabel.text = [contact name];
-    cell.detailTextLabel.text = [contact phone];
+    if ([contact name] != nil) {
+        cell.textLabel.text = [contact name];
+        cell.detailTextLabel.text = [contact phone];
+    } else {
+        cell.textLabel.text = [contact phone];
+    }
     
     return cell;
 }
@@ -152,29 +178,30 @@
     [_geoCoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error) {
             NSLog(@"ERROR:There was a reverse geocoding error\n%@", [error description]);
+        } else {
+            // Iterate through all of the placemarks returned
+            // and output them to the console
+            for(CLPlacemark *placemark in placemarks) {
+                NSLog(@"INFO:Address:\n%@", ABCreateStringWithAddressDictionary(placemark.addressDictionary, YES));
+            }
+            CLPlacemark *placemark = [placemarks lastObject];
+            _currentAddress = ABCreateStringWithAddressDictionary(placemark.addressDictionary, YES);
         }
-        // Iterate through all of the placemarks returned
-        // and output them to the console
-        for(CLPlacemark *placemark in placemarks) {
-            NSLog(@"INFO:Address:\n%@", ABCreateStringWithAddressDictionary(placemark.addressDictionary, YES));
-        }
-        CLPlacemark *placemark = [placemarks lastObject];
-        _currentAddress = ABCreateStringWithAddressDictionary(placemark.addressDictionary, YES);
     }];
-
     
-//    // test that the horizontal accuracy does not indicate an invalid measurement
-//    if (newLocation.horizontalAccuracy < 0) return;
     
-//    // test the measurement to see if it is more accurate than the previous measurement
-//    if (_currentLocation == nil || _currentLocation.horizontalAccuracy > newLocation.horizontalAccuracy) {
-//        // store the location as the "best effort"
-//        _currentLocation = newLocation;
-//        // test the measurement to see if it meets the desired accuracy
-//        if (newLocation.horizontalAccuracy <= _locationManager.desiredAccuracy) {
-//            [_locationManager stopUpdatingLocation];
-//        }
-//    }
+    //    // test that the horizontal accuracy does not indicate an invalid measurement
+    //    if (newLocation.horizontalAccuracy < 0) return;
+    
+    //    // test the measurement to see if it is more accurate than the previous measurement
+    //    if (_currentLocation == nil || _currentLocation.horizontalAccuracy > newLocation.horizontalAccuracy) {
+    //        // store the location as the "best effort"
+    //        _currentLocation = newLocation;
+    //        // test the measurement to see if it meets the desired accuracy
+    //        if (newLocation.horizontalAccuracy <= _locationManager.desiredAccuracy) {
+    //            [_locationManager stopUpdatingLocation];
+    //        }
+    //    }
 }
 
 #pragma mark - ABPeoplePickerNavigationControllerDelegate
@@ -198,9 +225,9 @@
     CFStringRef phone = ABMultiValueCopyValueAtIndex(multi, identifier);
     NSString *phoneString = (__bridge NSString *) phone;
     [self addContactWithName:displayName phone:phoneString];
-    CFRelease(name);
-    CFRelease(phone);
-    CFRelease(multi);
+    if(name) CFRelease(name);
+    if(phone) CFRelease(phone);
+    if(multi) CFRelease(multi);
     [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:NULL];
     return NO;
@@ -209,7 +236,6 @@
 #pragma mark - handlers
 - (void)addItem:sender
 {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     picker.peoplePickerDelegate = self;
     // Display only a person's phone
@@ -221,8 +247,19 @@
 
 - (void)sendAlert
 {
-    // send SMS
-    NSString *messageText = [NSString stringWithFormat:@"I need help! I'm at \n%@\nLon/Lat: %f, %f", _currentAddress, _currentLocation.coordinate.latitude, _currentLocation.coordinate.longitude];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kSiren]) {
+        [_player play];
+    }
+    
+    NSString *latLonLink = @"";
+    NSString *address = @"";
+    if (_currentLocation != nil) {
+        latLonLink = [NSString stringWithFormat:kGoogleMapsLink, _currentLocation.coordinate.latitude, _currentLocation.coordinate.longitude];
+    }
+    if (_currentAddress != nil) {
+        address = _currentAddress;
+    }
+    NSString *messageText = [NSString stringWithFormat:NSLocalizedString(@"sms_text", "text sms_text"), address, latLonLink];
     NSLog(@"INFO:Message text:\n%@", messageText);
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
     if([MFMessageComposeViewController canSendText]) {
@@ -237,10 +274,18 @@
     }
 }
 
+- (void)showSettings
+{
+    SettingsViewController *settingsViewController = [[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+    [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [self presentModalViewController:navController animated:YES];
+}
+
 #pragma mark - CoreData
 - (void)addContactWithName:(NSString *)name phone:(NSString *)phone
 {
-    Contact *contact = (Contact *)[NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:_managedObjectContext];
+    Contact *contact = (Contact *)[NSEntityDescription insertNewObjectForEntityForName:kContact inManagedObjectContext:_managedObjectContext];
     [contact setName:name];
     [contact setPhone:phone];
     NSError *error = nil;
@@ -253,10 +298,10 @@
 - (void)fetch
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Contact" inManagedObjectContext:_managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:kContact inManagedObjectContext:_managedObjectContext];
     [request setEntity:entity];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:kName ascending:YES];
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     [request setSortDescriptors:sortDescriptors];
     
