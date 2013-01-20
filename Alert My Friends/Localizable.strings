@@ -15,6 +15,6 @@
 "alert_my_friends" = "Alert My Friends";
 "settings" = "Settings";
 "help" = "Help";
-"empty_contacts_title" = "Add Contacts";
-"empty_contacts_message" = "Please add some contacts before you can send alerts";
-"add_contacts" = "Add Contacts";
+"empty_contacts_title" = "Add Friends";
+"empty_contacts_message" = "Please add some friends before you can send alerts";
+"add_friends" = "Add Friends";

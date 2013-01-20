@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     
-    [self setTitle:NSLocalizedString(@"add_contacts", "text add_contacts")];
+    [self setTitle:NSLocalizedString(@"add_friends", "text add_friends")];
     
     [self.tableView setAllowsSelection:NO];
     
