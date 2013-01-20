@@ -23,6 +23,8 @@
 @synthesize geoCoder = _geoCoder;
 @synthesize player = _player;
 @synthesize contactsViewController = _contactsViewController;
+@synthesize coordinatesLabel = _coordinatesLabel;
+@synthesize addressLabel = _addressLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -165,6 +167,7 @@
     NSLog(@"INFO:Location:\n lat: %f\n lon: %f\n accuracy: %f\n age: %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude, newLocation.horizontalAccuracy, locationAge);
     
     _currentLocation = newLocation;
+    [self updateLocationLabels];
     
     // reverse geocode and save current address
     [_geoCoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -178,6 +181,7 @@
             }
             CLPlacemark *placemark = [placemarks lastObject];
             _currentAddress = ABCreateStringWithAddressDictionary(placemark.addressDictionary, YES);
+            [self updateLocationLabels];
         }
     }];
     
@@ -194,6 +198,15 @@
     //            [_locationManager stopUpdatingLocation];
     //        }
     //    }
+}
+
+- (void)updateLocationLabels {
+    if (_currentLocation != nil) {
+        _coordinatesLabel.text = [NSString stringWithFormat:@"%f, %f", _currentLocation.coordinate.latitude, _currentLocation.coordinate.longitude];
+    }
+    if (_currentAddress != nil) {
+        _addressLabel.text = _currentAddress;
+    }
 }
 
 #pragma mark - MFMessageComposeViewControllerDelegate

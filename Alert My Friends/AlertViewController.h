@@ -21,5 +21,7 @@
 @property (strong, nonatomic) NSString *currentAddress;
 @property (strong, nonatomic) CLGeocoder *geoCoder;
 @property (strong, nonatomic) AVAudioPlayer *player;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *coordinatesLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *addressLabel;
 
 @end
