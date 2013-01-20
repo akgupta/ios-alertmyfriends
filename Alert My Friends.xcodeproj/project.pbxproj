@@ -14,6 +14,16 @@
 		8529E4CA16981CE1003A1C44 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8529E4C916981CE1003A1C44 /* MessageUI.framework */; };
 		853369DF16AA6C9A00769B35 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 853369DE16AA6C9A00769B35 /* Icon.png */; };
 		853369E116AA6CAB00769B35 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 853369E016AA6CAB00769B35 /* Icon@2x.png */; };
+		853369EC16AB3B9600769B35 /* AlertMyFriends-512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = 853369E216AA6F5200769B35 /* AlertMyFriends-512x512.png */; };
+		853369F016AB3D9300769B35 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 853369EE16AB3D9300769B35 /* AlertViewController.m */; };
+		853369F116AB3D9300769B35 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 853369EF16AB3D9300769B35 /* AlertViewController.xib */; };
+		853369F716AB707300769B35 /* Icon~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 853369F616AB707300769B35 /* Icon~ipad.png */; };
+		853369F916AB707F00769B35 /* Icon~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 853369F816AB707F00769B35 /* Icon~ipad@2x.png */; };
+		853369FB16AB738B00769B35 /* group.png in Resources */ = {isa = PBXBuildFile; fileRef = 853369FA16AB738B00769B35 /* group.png */; };
+		853369FD16AB787E00769B35 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 853369FC16AB787E00769B35 /* Default-Portrait~ipad.png */; };
+		853369FF16AB78B800769B35 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 853369FE16AB78B700769B35 /* Default-Portrait@2x~ipad.png */; };
+		85336A0116AB78C100769B35 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 85336A0016AB78C100769B35 /* Default-Landscape~ipad.png */; };
+		85336A0316AB78C700769B35 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 85336A0216AB78C700769B35 /* Default-Landscape@2x~ipad.png */; };
 		85498F7E1695775400BC670E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498F7D1695775400BC670E /* AddressBook.framework */; };
 		85498F801695775800BC670E /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498F7F1695775800BC670E /* AddressBookUI.framework */; };
 		85498FB61696B16C00BC670E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498FB51696B16C00BC670E /* CoreData.framework */; };
@@ -43,6 +53,16 @@
 		853369DE16AA6C9A00769B35 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
 		853369E016AA6CAB00769B35 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
 		853369E216AA6F5200769B35 /* AlertMyFriends-512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AlertMyFriends-512x512.png"; path = "../AlertMyFriends-512x512.png"; sourceTree = "<group>"; };
+		853369ED16AB3D9200769B35 /* AlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
+		853369EE16AB3D9300769B35 /* AlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
+		853369EF16AB3D9300769B35 /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
+		853369F616AB707300769B35 /* Icon~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon~ipad.png"; path = "../Icon~ipad.png"; sourceTree = "<group>"; };
+		853369F816AB707F00769B35 /* Icon~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon~ipad@2x.png"; path = "../Icon~ipad@2x.png"; sourceTree = "<group>"; };
+		853369FA16AB738B00769B35 /* group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group.png; sourceTree = "<group>"; };
+		853369FC16AB787E00769B35 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		853369FE16AB78B700769B35 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "../Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		85336A0016AB78C100769B35 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		85336A0216AB78C700769B35 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "../Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		85498F7D1695775400BC670E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		85498F7F1695775800BC670E /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		85498FB51696B16C00BC670E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -133,6 +153,9 @@
 				8516913616A8007800DD3426 /* Constants.h */,
 				8520520C16AA1A92006D5FB7 /* SettingsViewController.h */,
 				8520520D16AA1A92006D5FB7 /* SettingsViewController.m */,
+				853369ED16AB3D9200769B35 /* AlertViewController.h */,
+				853369EE16AB3D9300769B35 /* AlertViewController.m */,
+				853369EF16AB3D9300769B35 /* AlertViewController.xib */,
 			);
 			path = "Alert My Friends";
 			sourceTree = "<group>";
@@ -140,6 +163,13 @@
 		85E52DBE16921CB400B65A1E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				85336A0216AB78C700769B35 /* Default-Landscape@2x~ipad.png */,
+				85336A0016AB78C100769B35 /* Default-Landscape~ipad.png */,
+				853369FE16AB78B700769B35 /* Default-Portrait@2x~ipad.png */,
+				853369FC16AB787E00769B35 /* Default-Portrait~ipad.png */,
+				853369FA16AB738B00769B35 /* group.png */,
+				853369F816AB707F00769B35 /* Icon~ipad@2x.png */,
+				853369F616AB707300769B35 /* Icon~ipad.png */,
 				853369E216AA6F5200769B35 /* AlertMyFriends-512x512.png */,
 				853369E016AA6CAB00769B35 /* Icon@2x.png */,
 				853369DE16AA6C9A00769B35 /* Icon.png */,
@@ -216,6 +246,15 @@
 				8516916D16A9370E00DD3426 /* siren.wav in Resources */,
 				853369DF16AA6C9A00769B35 /* Icon.png in Resources */,
 				853369E116AA6CAB00769B35 /* Icon@2x.png in Resources */,
+				853369EC16AB3B9600769B35 /* AlertMyFriends-512x512.png in Resources */,
+				853369F116AB3D9300769B35 /* AlertViewController.xib in Resources */,
+				853369F716AB707300769B35 /* Icon~ipad.png in Resources */,
+				853369F916AB707F00769B35 /* Icon~ipad@2x.png in Resources */,
+				853369FB16AB738B00769B35 /* group.png in Resources */,
+				853369FD16AB787E00769B35 /* Default-Portrait~ipad.png in Resources */,
+				853369FF16AB78B800769B35 /* Default-Portrait@2x~ipad.png in Resources */,
+				85336A0116AB78C100769B35 /* Default-Landscape~ipad.png in Resources */,
+				85336A0316AB78C700769B35 /* Default-Landscape@2x~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +271,7 @@
 				8549901D1696BF6A00BC670E /* Alert My Friends.xcdatamodeld in Sources */,
 				854990201696C0FB00BC670E /* Contact.m in Sources */,
 				8520520E16AA1A92006D5FB7 /* SettingsViewController.m in Sources */,
+				853369F016AB3D9300769B35 /* AlertViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

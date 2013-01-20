@@ -16,3 +16,4 @@
 #define kSettingsCount 3
 #define kHelpURL @"https://sites.google.com/site/alertmyfriends/ios"
 #define kGoogleMapsLink @"http://maps.google.com/?q=%f,%f"
+#define ApplicationDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)

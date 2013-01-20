@@ -7,12 +7,10 @@
 //
 
 #import "AppDelegate.h"
-
-#import "ContactsViewController.h"
+#import "AlertViewController.h"
 
 @implementation AppDelegate
 
-@synthesize contactsViewController = _contactsViewController;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
@@ -27,11 +25,12 @@
                                  [NSNumber numberWithBool:NO], kSiren,
                                  [NSNumber numberWithBool:NO], kShake, nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
-    // init contacts controller
-    self.contactsViewController = [[ContactsViewController alloc] initWithStyle:UITableViewStylePlain];
-    self.contactsViewController.managedObjectContext = [self managedObjectContext];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.contactsViewController];
+    
+    AlertViewController *alertViewController = [[AlertViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:alertViewController];
+    
     self.window.rootViewController = navigationController;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
