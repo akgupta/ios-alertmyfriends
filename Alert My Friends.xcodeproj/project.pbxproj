@@ -28,7 +28,7 @@
 		85498F801695775800BC670E /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498F7F1695775800BC670E /* AddressBookUI.framework */; };
 		85498FB61696B16C00BC670E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85498FB51696B16C00BC670E /* CoreData.framework */; };
 		8549901D1696BF6A00BC670E /* Alert My Friends.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8549901B1696BF6A00BC670E /* Alert My Friends.xcdatamodeld */; };
-		854990201696C0FB00BC670E /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 8549901F1696C0FB00BC670E /* Contact.m */; };
+		85BC831916AF9F9E0011F346 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 85BC831816AF9F9E0011F346 /* Contact.m */; };
 		85E52DB816921CB400B65A1E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E52DB716921CB400B65A1E /* UIKit.framework */; };
 		85E52DBA16921CB400B65A1E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E52DB916921CB400B65A1E /* Foundation.framework */; };
 		85E52DBC16921CB400B65A1E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E52DBB16921CB400B65A1E /* CoreGraphics.framework */; };
@@ -67,8 +67,8 @@
 		85498F7F1695775800BC670E /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		85498FB51696B16C00BC670E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		8549901C1696BF6A00BC670E /* Alert My Friends.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Alert My Friends.xcdatamodel"; sourceTree = "<group>"; };
-		8549901E1696C0FB00BC670E /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Contact.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		8549901F1696C0FB00BC670E /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Contact.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		85BC831716AF9F9E0011F346 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		85BC831816AF9F9E0011F346 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		85E52DB316921CB400B65A1E /* Alert My Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alert My Friends.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85E52DB716921CB400B65A1E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		85E52DB916921CB400B65A1E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -143,13 +143,13 @@
 		85E52DBD16921CB400B65A1E /* Alert My Friends */ = {
 			isa = PBXGroup;
 			children = (
+				85BC831716AF9F9E0011F346 /* Contact.h */,
+				85BC831816AF9F9E0011F346 /* Contact.m */,
 				85E52DC616921CB400B65A1E /* AppDelegate.h */,
 				85E52DC716921CB400B65A1E /* AppDelegate.m */,
 				85E52DBE16921CB400B65A1E /* Supporting Files */,
 				85E52DDF16921F6700B65A1E /* ContactsViewController.h */,
 				85E52DE016921F6700B65A1E /* ContactsViewController.m */,
-				8549901E1696C0FB00BC670E /* Contact.h */,
-				8549901F1696C0FB00BC670E /* Contact.m */,
 				8516913616A8007800DD3426 /* Constants.h */,
 				8520520C16AA1A92006D5FB7 /* SettingsViewController.h */,
 				8520520D16AA1A92006D5FB7 /* SettingsViewController.m */,
@@ -269,9 +269,9 @@
 				85E52DC816921CB400B65A1E /* AppDelegate.m in Sources */,
 				85E52DE116921F6700B65A1E /* ContactsViewController.m in Sources */,
 				8549901D1696BF6A00BC670E /* Alert My Friends.xcdatamodeld in Sources */,
-				854990201696C0FB00BC670E /* Contact.m in Sources */,
 				8520520E16AA1A92006D5FB7 /* SettingsViewController.m in Sources */,
 				853369F016AB3D9300769B35 /* AlertViewController.m in Sources */,
+				85BC831916AF9F9E0011F346 /* Contact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
