@@ -72,10 +72,10 @@
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"db_error", "text db_error") message:NSLocalizedString(@"db_error_message", "text db_error_message") delegate:self cancelButtonTitle:NSLocalizedString(@"ok", "text ok") otherButtonTitles:nil];
-            [alert show];
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"db_error", "text db_error") message:NSLocalizedString(@"db_error_message", "text db_error_message") delegate:self cancelButtonTitle:NSLocalizedString(@"ok", "text ok") otherButtonTitles:nil];
+//            [alert show];
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            //            abort();
+            abort();
         }
     }
 }
@@ -150,9 +150,10 @@
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
          
          */
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"db_error", "text db_error") message:NSLocalizedString(@"db_error_message", "text db_error_message") delegate:self cancelButtonTitle:NSLocalizedString(@"ok", "text ok") otherButtonTitles:nil];
-		[alert show];
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        // reset the store
+        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
+        [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:nil];
         //        abort();
     }
     

@@ -91,6 +91,9 @@
     } else {
         cell.textLabel.text = [contact phone];
     }
+    if ([contact image] != nil) {
+        cell.imageView.image = [UIImage imageWithData:[contact image]];
+    }
     
     return cell;
 }
@@ -129,15 +132,27 @@
                                 property:(ABPropertyID)property
                               identifier:(ABMultiValueIdentifier)identifier
 {
+    // get image if present
+    NSData *imageData = nil;
+    CFDataRef image = nil;
+    if (ABPersonHasImageData(person)) {
+        image = ABPersonCopyImageDataWithFormat(person, kABPersonImageFormatThumbnail);
+        imageData = (__bridge NSData *)image;
+    }
+    // get name and phone
     ABMutableMultiValueRef multi = ABRecordCopyValue(person, property);
     CFStringRef name = ABRecordCopyCompositeName(person);
     NSString *displayName = (__bridge NSString *)name;
     CFStringRef phone = ABMultiValueCopyValueAtIndex(multi, identifier);
     NSString *phoneString = (__bridge NSString *) phone;
-    [self addContactWithName:displayName phone:phoneString];
+    
+    [self addContactWithName:displayName phone:phoneString image:imageData];
+    
+    if(image) CFRelease(image);
     if(name) CFRelease(name);
     if(phone) CFRelease(phone);
     if(multi) CFRelease(multi);
+    
     [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:NULL];
     return NO;
@@ -160,11 +175,12 @@
 }
 
 #pragma mark - CoreData
-- (void)addContactWithName:(NSString *)name phone:(NSString *)phone
+- (void)addContactWithName:(NSString *)name phone:(NSString *)phone image:(NSData *)image
 {
     Contact *contact = (Contact *)[NSEntityDescription insertNewObjectForEntityForName:kContact inManagedObjectContext:_managedObjectContext];
     [contact setName:name];
     [contact setPhone:phone];
+    [contact setImage:image];
     NSError *error = nil;
     if (![_managedObjectContext save:&error]) {
         // Handle the error.
