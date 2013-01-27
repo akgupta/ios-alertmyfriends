@@ -17,7 +17,6 @@
 
 @implementation AlertViewController
 
-@synthesize locationManager = _locationManager;
 @synthesize currentLocation = _currentLocation;
 @synthesize currentAddress = _currentAddress;
 @synthesize geoCoder = _geoCoder;
@@ -25,6 +24,7 @@
 @synthesize contactsViewController = _contactsViewController;
 @synthesize coordinatesLabel = _coordinatesLabel;
 @synthesize addressLabel = _addressLabel;
+@synthesize mapView = _mapView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -81,12 +81,10 @@
     [_contactsViewController fetch];
     
     // Location
-    _locationManager = [[CLLocationManager alloc] init];
-    _locationManager.delegate = self;
-    [_locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
-    [_locationManager setDistanceFilter:100];
-    [_locationManager startUpdatingLocation];
     _geoCoder = [[CLGeocoder alloc] init];
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0")) {
+        [_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:NO];
+    }
     
     // AV Player
     NSString *soundFilePath = [[NSBundle mainBundle] pathForResource: @"siren" ofType: @"wav"];
@@ -156,13 +154,12 @@
     }
 }
 
-#pragma mark - CLLocationManagerDelegate
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-    // test the age of the location measurement to determine if the measurement is cached
-    // in most cases you will not want to rely on cached measurements
+#pragma mark - MKMapViewDelegate
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    
+    CLLocation *newLocation = userLocation.location;
     NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
-    if (locationAge > 5.0) return;
     
     NSLog(@"INFO:Location:\n lat: %f\n lon: %f\n accuracy: %f\n age: %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude, newLocation.horizontalAccuracy, locationAge);
     
@@ -184,20 +181,6 @@
             [self updateLocationLabels];
         }
     }];
-    
-    
-    //    // test that the horizontal accuracy does not indicate an invalid measurement
-    //    if (newLocation.horizontalAccuracy < 0) return;
-    
-    //    // test the measurement to see if it is more accurate than the previous measurement
-    //    if (_currentLocation == nil || _currentLocation.horizontalAccuracy > newLocation.horizontalAccuracy) {
-    //        // store the location as the "best effort"
-    //        _currentLocation = newLocation;
-    //        // test the measurement to see if it meets the desired accuracy
-    //        if (newLocation.horizontalAccuracy <= _locationManager.desiredAccuracy) {
-    //            [_locationManager stopUpdatingLocation];
-    //        }
-    //    }
 }
 
 - (void)updateLocationLabels {

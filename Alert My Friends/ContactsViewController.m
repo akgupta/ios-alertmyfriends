@@ -93,6 +93,8 @@
     }
     if ([contact image] != nil) {
         cell.imageView.image = [UIImage imageWithData:[contact image]];
+    } else {
+        cell.imageView.image = [UIImage imageNamed:@"default_person"];
     }
     
     return cell;
