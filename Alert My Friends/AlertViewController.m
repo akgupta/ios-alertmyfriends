@@ -68,9 +68,11 @@
     self.navigationItem.rightBarButtonItem = contactsButton;
     
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"\u2699" style:UIBarButtonItemStyleBordered target:self action:@selector(showSettings)];
-    UIFont *settingsFont = [UIFont fontWithName:@"Helvetica" size:24.0];
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:settingsFont, UITextAttributeFont, nil];
-    [settingsButton setTitleTextAttributes:dict forState:UIControlStateNormal];
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0")) {
+        UIFont *settingsFont = [UIFont fontWithName:@"Helvetica" size:24.0];
+        NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:settingsFont, UITextAttributeFont, nil];
+        [settingsButton setTitleTextAttributes:dict forState:UIControlStateNormal];
+    }
     
     self.navigationItem.leftBarButtonItem = settingsButton;
     
@@ -82,9 +84,7 @@
     
     // Location
     _geoCoder = [[CLGeocoder alloc] init];
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0")) {
-        [_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:NO];
-    }
+    [_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:NO];
     
     // AV Player
     NSString *soundFilePath = [[NSBundle mainBundle] pathForResource: @"siren" ofType: @"wav"];
@@ -150,7 +150,7 @@
         }
         [messageController setRecipients:recipients];
         messageController.messageComposeDelegate = self;
-        [self presentViewController:messageController animated:YES completion:NULL];
+        [self presentModalViewController:messageController animated:YES];
     }
 }
 
@@ -195,7 +195,7 @@
 #pragma mark - MFMessageComposeViewControllerDelegate
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
 {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

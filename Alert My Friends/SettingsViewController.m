@@ -101,7 +101,7 @@ typedef enum {
 }
 
 - (void) done {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 

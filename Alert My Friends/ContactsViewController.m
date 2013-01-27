@@ -122,7 +122,7 @@
 #pragma mark - ABPeoplePickerNavigationControllerDelegate
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
 {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person {
@@ -156,7 +156,7 @@
     if(multi) CFRelease(multi);
     
     [self.tableView reloadData];
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self dismissModalViewControllerAnimated:YES];
     return NO;
 }
 
@@ -169,7 +169,7 @@
     NSArray *displayedItems = [NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonPhoneProperty]];
     picker.displayedProperties = displayedItems;
     // Show the picker
-    [self presentViewController:picker animated:YES completion:NULL];
+    [self presentModalViewController:picker animated:YES];
 }
 
 - (void)done {
