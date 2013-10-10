@@ -21,13 +21,31 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>Icon.png</string>
-				<string>Icon@2x.png</string>
-				<string>Icon~ipad.png</string>
-				<string>Icon~ipad@2x.png</string>
+				<string>AlertMyFriends-80x80</string>
+				<string>AlertMyFriends-58x58</string>
+				<string>AlertMyFriends-29x29</string>
+				<string>AlertMyFriends-120x120</string>
+				<string>Icon</string>
 			</array>
-			<key>UIPrerenderedIcon</key>
-			<true/>
+		</dict>
+	</dict>
+	<key>CFBundleIcons~ipad</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>AlertMyFriends-58x58</string>
+				<string>AlertMyFriends-29x29</string>
+				<string>AlertMyFriends-80x80</string>
+				<string>AlertMyFriends-40x40</string>
+				<string>AlertMyFriends-100x100</string>
+				<string>AlertMyFriends-50x50</string>
+				<string>AlertMyFriends-152x152</string>
+				<string>AlertMyFriends-76x76</string>
+				<string>Icon~ipad</string>
+				<string>Icon</string>
+			</array>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
@@ -39,11 +57,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>2.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>2.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIPrerenderedIcon</key>
